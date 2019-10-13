@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class SearchController {
     private final SearchService searchService;
 
-    @PostMapping("/search")
-    public void search(@RequestBody final ISBNRequest isbnRequest) {
-        searchService.search(isbnRequest);
+    @PostMapping("/index")
+    public void index(@RequestBody final ISBNRequest isbnRequest) {
+        searchService.index(isbnRequest);
     }
 
 }
