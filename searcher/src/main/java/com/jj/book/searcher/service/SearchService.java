@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.io.IOException;
 import java.util.Map;
 
 @Slf4j
@@ -35,7 +36,13 @@ public class SearchService {
         if (response.getStatusCode() == HttpStatus.OK) {
             isbnResponse = gson.fromJson(response.getBody(), ISBNResponse.class);
             log.info("[response]:" + isbnResponse.toString());
+            try {
+                searchRepository.save(isbnResponse);
+            } catch (IOException e) {
+                log.info(e.toString());
+            }
         }
+
     }
 
 }
