@@ -14,6 +14,7 @@ public class SearchController {
     @GetMapping("/search/{keyword}")
     public String search(@PathVariable String keyword) {
         return searchService.search(keyword);
+
     }
 
 }
