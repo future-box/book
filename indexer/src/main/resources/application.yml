@@ -1,0 +1,6 @@
+server:
+  port: 9998
+
+application:
+    index: book
+    url: http://seoji.nl.go.kr/landingPage/SearchApi.do?cert_key={certKey}&result_style={resultStyle}&page_size={pageSize}&page_no={pageNo}&start_publish_date={startPublishDate}&end_publish_date={endPublishDate}

@@ -1,8 +1,7 @@
-package com.jj.book.searcher.model;
+package com.jj.book.indexer.model;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.lang.NonNull;
 
 import java.io.Serializable;
 
@@ -33,13 +32,9 @@ public class ISBNRequest implements Serializable {
      * INDEX_PUBLISHER
      * PUBLISH_PREDATE	String		정렬방식 ASC , DESC
      */
-    @NonNull
     private String certKey;
-    @NonNull
     private String resultStyle;
-    @NonNull
     private String pageNo;
-    @NonNull
     private String pageSize;
     private String startPublishDate;
     private String endPublishDate;

@@ -1,13 +1,13 @@
-package com.jj.book.searcher.model;
+package com.jj.book.indexer.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
-public class ISBNResponse {
-    private String PAGE_NO;
-    private String TOTAL_COUNT;
+@ToString
+public class Doc {
     private String TITLE;
     private String VOL;
     private String SERIES_TITLE;

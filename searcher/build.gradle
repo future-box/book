@@ -22,9 +22,14 @@ repositories {
     mavenCentral()
 }
 
+ext {
+    set('elasticsearch.version', '7.4.0')
+}
+
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-elasticsearch'
-    compile group: 'org.elasticsearch.client', name: 'elasticsearch-rest-high-level-client', version: '6.6.0'
+    implementation 'org.elasticsearch:elasticsearch:7.4.0'
+    compile group: 'org.elasticsearch.client', name: 'elasticsearch-rest-high-level-client', version: '7.4.0'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
