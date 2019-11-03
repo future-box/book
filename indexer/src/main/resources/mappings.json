@@ -1,0 +1,119 @@
+{
+  "settings": {
+    "index": {
+      "analysis": {
+        "tokenizer": {
+          "nori_user_dict": {
+            "type": "nori_tokenizer",
+            "decompound_mode": "mixed",
+            "user_dictionary": "userdict_ko.txt"
+          }
+        },
+        "analyzer": {
+          "my_analyzer": {
+            "type": "custom",
+            "tokenizer": "nori_user_dict"
+          }
+        }
+      }
+    }
+  },
+  "mappings": {
+    "properties": {
+      "title": {
+        "type": "text",
+        "analyzer": "my_analyzer"
+      },
+      "vol": {
+        "type": "text",
+        "analyzer": "my_analyzer"
+      },
+      "series_title": {
+        "type": "keyword"
+      },
+      "series_no": {
+        "type": "keyword"
+      },
+      "author": {
+        "type": "text",
+        "analyzer": "my_analyzer"
+      },
+      "ea_isbn": {
+        "type": "keyword"
+      },
+      "ea_add_code": {
+        "type": "keyword"
+      },
+      "set_isbn": {
+        "type": "keyword"
+      },
+      "set_add_code": {
+        "type": "keyword"
+      },
+      "set_expression": {
+        "type": "keyword"
+      },
+      "publisher": {
+        "type": "text",
+        "analyzer": "my_analyzer"
+      },
+      "edition_stmt": {
+        "type": "keyword"
+      },
+      "pre_price": {
+        "type": "keyword"
+      },
+      "kdc": {
+        "type": "keyword"
+      },
+      "ddc": {
+        "type": "keyword"
+      },
+      "page": {
+        "type": "keyword"
+      },
+      "book_size": {
+        "type": "keyword"
+      },
+      "form": {
+        "type": "keyword"
+      },
+      "publish_predate": {
+        "type": "keyword"
+      },
+      "subject": {
+        "type": "text"
+      },
+      "ebook_yn": {
+        "type": "keyword"
+      },
+      "cip_yn": {
+        "type": "keyword"
+      },
+      "control_no": {
+        "type": "keyword"
+      },
+      "title_url": {
+        "type": "keyword"
+      },
+      "book_tb_cnt_url": {
+        "type": "keyword"
+      },
+      "book_introduction_url": {
+        "type": "keyword"
+      },
+      "book_summary_url": {
+        "type": "keyword"
+      },
+      "publisher_url": {
+        "type": "keyword"
+      },
+      "input_date": {
+        "type": "keyword"
+      },
+      "update_date": {
+        "type": "keyword"
+      }
+    }
+  }
+}

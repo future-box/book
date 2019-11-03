@@ -1,5 +1,6 @@
 package com.jj.book.searcher.web.controller;
 
+import com.jj.book.searcher.model.BookSearchResponse;
 import com.jj.book.searcher.service.SearchService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +13,7 @@ public class SearchController {
     private final SearchService searchService;
 
     @GetMapping("/search/{keyword}")
-    public String search(@PathVariable String keyword) {
+    public BookSearchResponse search(@PathVariable String keyword) {
         return searchService.search(keyword);
 
     }

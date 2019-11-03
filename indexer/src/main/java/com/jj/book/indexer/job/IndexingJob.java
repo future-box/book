@@ -1,24 +1,38 @@
 package com.jj.book.indexer.job;
 
-import com.jj.book.indexer.config.SearchProperty;
+import com.jj.book.indexer.model.ISBNRequest;
+import com.jj.book.indexer.service.CheckDocService;
 import com.jj.book.indexer.service.IndexingService;
-import lombok.RequiredArgsConstructor;
-import org.elasticsearch.action.index.IndexRequest;
+import lombok.extern.slf4j.Slf4j;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
-import org.quartz.JobExecutionException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+@Slf4j
 @Component
-@RequiredArgsConstructor
 public class IndexingJob implements Job {
-    private final IndexingService indexingService;
-    private final SearchProperty searchProperty;
+    @Autowired
+    private IndexingService indexingService;
+    @Autowired
+    private CheckDocService checkDocService;
 
     @Override
-    public void execute(JobExecutionContext context) throws JobExecutionException {
-        new IndexRequest()
-        .index();
+    public void execute(JobExecutionContext context) {
+        for (int i = 1; i <= 12; i++) {
+            LocalDate date = LocalDate.of(2019, i, 1);
+            String startDate = date.format(DateTimeFormatter.BASIC_ISO_DATE);
+            String endDate = date.plusDays(31L).format(DateTimeFormatter.BASIC_ISO_DATE);
+            if (checkDocService.isDocByDateExist(startDate, endDate)) {
+                ISBNRequest isbnRequest = new ISBNRequest();
+                isbnRequest.setStartPublishDate(startDate);
+                isbnRequest.setEndPublishDate(endDate);
+                indexingService.index(isbnRequest);
+                log.info("job executed. isbnRequest: [{}]", isbnRequest.toString());
+            }
+        }
     }
-
 }

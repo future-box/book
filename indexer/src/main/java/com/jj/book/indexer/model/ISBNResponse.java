@@ -11,7 +11,5 @@ import java.util.List;
 @Setter
 @ToString
 public class ISBNResponse implements Serializable {
-    private String PAGE_NO;
-    private String TOTAL_COUNT;
     private List<Doc> docs;
 }
