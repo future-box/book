@@ -22,16 +22,18 @@ public class IndexingJob implements Job {
 
     @Override
     public void execute(JobExecutionContext context) {
-        for (int i = 1; i <= 12; i++) {
-            LocalDate date = LocalDate.of(2019, i, 1);
-            String startDate = date.format(DateTimeFormatter.BASIC_ISO_DATE);
-            String endDate = date.plusDays(31L).format(DateTimeFormatter.BASIC_ISO_DATE);
-            if (checkDocService.isDocByDateExist(startDate, endDate)) {
-                ISBNRequest isbnRequest = new ISBNRequest();
-                isbnRequest.setStartPublishDate(startDate);
-                isbnRequest.setEndPublishDate(endDate);
-                indexingService.index(isbnRequest);
-                log.info("job executed. isbnRequest: [{}]", isbnRequest.toString());
+        for (int year = 2000; year <= 2019; year++) {
+            for (int month = 1; month <= 12; month++) {
+                LocalDate date = LocalDate.of(year, month, 1);
+                String startDate = date.format(DateTimeFormatter.BASIC_ISO_DATE);
+                String endDate = date.plusDays(31L).format(DateTimeFormatter.BASIC_ISO_DATE);
+                if (checkDocService.isDocByDateExist(startDate, endDate)) {
+                    ISBNRequest isbnRequest = new ISBNRequest();
+                    isbnRequest.setStartPublishDate(startDate);
+                    isbnRequest.setEndPublishDate(endDate);
+                    indexingService.index(isbnRequest);
+                    log.info("job executed. isbnRequest: [{}]", isbnRequest.toString());
+                }
             }
         }
     }

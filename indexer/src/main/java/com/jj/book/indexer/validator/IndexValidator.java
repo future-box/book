@@ -1,4 +1,4 @@
-package com.jj.book.indexer.validation;
+package com.jj.book.indexer.validator;
 
 import com.jj.book.indexer.model.ISBNRequest;
 import org.springframework.stereotype.Component;
