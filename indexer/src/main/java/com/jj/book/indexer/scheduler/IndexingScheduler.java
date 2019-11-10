@@ -3,7 +3,6 @@ package com.jj.book.indexer.scheduler;
 import com.jj.book.indexer.job.IndexingJob;
 import lombok.RequiredArgsConstructor;
 import org.quartz.*;
-import org.quartz.impl.StdSchedulerFactory;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 import org.springframework.stereotype.Component;
 
