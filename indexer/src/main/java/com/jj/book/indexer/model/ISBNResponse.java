@@ -6,7 +6,7 @@ import java.util.StringJoiner;
 
 public class ISBNResponse implements Serializable {
     private List<Book> docs;
-    private int totalCount;
+    private int total_count;
 
     public List<Book> getBooks() {
         return docs;
@@ -24,11 +24,11 @@ public class ISBNResponse implements Serializable {
     }
 
     public void setTotal_count(int totalCount) {
-        this.totalCount = totalCount;
+        this.total_count = totalCount;
     }
 
-    public int getTotalCount() {
-        return this.totalCount;
+    public int getTotal_count() {
+        return this.total_count;
     }
 
 }

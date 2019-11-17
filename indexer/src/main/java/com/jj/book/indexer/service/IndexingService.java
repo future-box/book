@@ -55,7 +55,7 @@ public class IndexingService {
     private void save(final ISBNResponse isbnResponse) {
         //서적 정보 Doc -> IndexRequest
         Stream<IndexRequest> indexRequestStream = isbnResponse.getBooks().stream()
-                .filter(itBookFilter)
+                .filter(this.itBookFilter)
                 .map(response -> new IndexRequest()
                         .index("book")
                         .id(response.getEa_isbn())
